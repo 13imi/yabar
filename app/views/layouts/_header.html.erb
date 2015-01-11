@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+  <h3>ようこそ、<%= current_user.name %> さん</h3>
+<% end %>
+<ul class="nav">
+  <% if user_signed_in? %>
+    <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
+  <% else %>
+    <li><%= link_to "facebookでログイン", user_omniauth_authorize_path(:facebook) %></li>
+  <% end %>
+</ul>

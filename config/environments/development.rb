@@ -41,4 +41,10 @@ Rails.application.configure do
 
   # Devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  Devise.setup do |config|
+    config.mailer_sender = 'devise@example.com'
+    config.omniauth :facebook, '599980640145457', 'fafc59189317148366e4f8ac22eaf230'
+    # config.omniauth :twitter, '{ID}', '{SECRET}', :display => 'popup'
+  end
 end
