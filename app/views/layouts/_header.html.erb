@@ -6,5 +6,6 @@
     <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
   <% else %>
     <li><%= link_to "facebookでログイン", user_omniauth_authorize_path(:facebook) %></li>
+    <li><%= link_to "twitterでログイン", user_omniauth_authorize_path(:twitter) %></li>
   <% end %>
 </ul>

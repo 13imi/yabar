@@ -45,6 +45,6 @@ Rails.application.configure do
   Devise.setup do |config|
     config.mailer_sender = 'devise@example.com'
     config.omniauth :facebook, '599980640145457', 'fafc59189317148366e4f8ac22eaf230'
-    # config.omniauth :twitter, '{ID}', '{SECRET}', :display => 'popup'
+    config.omniauth :twitter, 'QiOxGwLtso0SoNjZpiL46qkqK', 'PJi5qoWs4TcOj13Jge16engK9kvksK1e2Tadl3Jn4xFnZkU5iZ', display: 'popup'
   end
 end

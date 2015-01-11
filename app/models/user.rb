@@ -17,26 +17,22 @@ class User < ActiveRecord::Base
     user
   end
 
-  # def self.new_with_session(params, session)
-  #   super.tap do |user|
-  #     if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-  #       user.email = data["email"]
-  #     end
-  #   end
-  # end
+  def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
+    user = User.where(provider: auth.provider, uid: auth.uid).first
+    unless user
+      user = User.create(name:     auth.info.nickname,
+                         provider: auth.provider,
+                         uid:      auth.uid,
+                         email:    User.dummy_email(auth),
+                         password: Devise.friendly_token[0, 20]
+                        )
+    end
+    user
+  end
 
   private
 
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@example.com"
-  end
-
-
-  def self.create_unique_string
-    SecureRandom.uuid
-  end
-
-  def self.create_unique_email
-    User.create_unique_string + "@example.com"
   end
 end
