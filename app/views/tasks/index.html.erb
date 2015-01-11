@@ -1,0 +1,16 @@
+<% if user_signed_in?  %>
+  <h2><%= current_user.name %> さんのタスクリスト</h2>
+<% end %>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <%= task.name %>
+      <ul>
+        <% task.todos.each do |todo| %>
+          <li><%= todo.name %>(done: <%= todo.done %>)</li>
+        <% end if task.todos %>
+      </ul>
+    </li>
+  <% end if @tasks %>
+</ul>
