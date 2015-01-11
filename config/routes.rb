@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'tasks/' => 'tasks#index'
-  get 'tasks/create'
+  post 'tasks/' => 'tasks#create'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 

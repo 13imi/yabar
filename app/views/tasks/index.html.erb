@@ -2,15 +2,25 @@
   <h2><%= current_user.name %> さんのタスクリスト</h2>
 <% end %>
 
-<ul>
-  <% @tasks.each do |task| %>
+<%= form_for @task, remote: true do |f| %>
+  <%= f.text_field :name , class: '', placeholder: 'タスク名' %>
+  <%= f.date_field :deadline , class: '' %>
+  <%= f.number_field :yabasa , class: '', placeholder: 'ヤバさ' %>
+  <%= f.text_area :memo , class: '', placeholder: '備考欄' %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= f.submit '投稿', class: '' %>
+<% end %>
+
+
+<ul id="task-list">
+  <% @tasks.to_a.each do |task| %>
     <li>
-      <%= task.name %>
+      <%= task.name %> (<%= task.deadline %>まで ヤバさ: <%= task.yabasa %>)
       <ul>
         <% task.todos.each do |todo| %>
           <li><%= todo.name %>(done: <%= todo.done %>)</li>
         <% end if task.todos %>
       </ul>
     </li>
-  <% end if @tasks %>
+  <% end %>
 </ul>
