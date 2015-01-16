@@ -17,6 +17,12 @@ $ bundle exec db:create
 $ bundle exec db:migrate
 ```
 
+`config/database.yml.example`から`config/database.yml`を作成
+
+```
+$ mv config/database.yml.example config/database.yml
+```
+
 `config/database.yml`の`username`と`password`は自分の設定をする
 
 ### Requirement
