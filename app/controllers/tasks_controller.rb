@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_tasks
+  before_action :set_tasks, :set_dates
 
   def index
     @task = Task.new
@@ -17,10 +17,21 @@ class TasksController < ApplicationController
     end
   end
 
+  def past_tasks
+    yesterday = @today.yesterday
+    @tasks = @tasks.day_before(yesterday)
+
+    render 'tasks', formats: [:json], handlers: [:jbuilder]
+  end
+
   def current_tasks
-    @today = Time.zone.today
-    @one_week_after = @today + 7.days
     @tasks = @tasks.day_after(@today).day_before(@one_week_after)
+
+    render 'tasks', formats: [:json], handlers: [:jbuilder]
+  end
+
+  def future_tasks
+    @tasks = @tasks.day_after(@one_week_after + 1.days)
 
     render 'tasks', formats: [:json], handlers: [:jbuilder]
   end
@@ -29,6 +40,11 @@ class TasksController < ApplicationController
 
   def set_tasks
     @tasks = current_user.tasks.includes(:todos) if user_signed_in?
+  end
+
+  def set_dates
+    @today = Time.zone.today
+    @one_week_after = @today + 7.days
   end
 
   def task_params
