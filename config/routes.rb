@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  get 'users/current_tasks.json' => 'tasks#current_tasks'
+  get 'users/past_tasks.json' => 'tasks#past_tasks'
+  get 'users/future_tasks.json' => 'tasks#future_tasks'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
