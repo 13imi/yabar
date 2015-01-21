@@ -17,6 +17,14 @@ class TasksController < ApplicationController
     end
   end
 
+  def current_tasks
+    @today = Time.zone.today
+    @one_week_after = @today + 7.days
+    @tasks = @tasks.day_after(@today).day_before(@one_week_after)
+
+    render 'tasks', formats: [:json], handlers: [:jbuilder]
+  end
+
   private
 
   def set_tasks
