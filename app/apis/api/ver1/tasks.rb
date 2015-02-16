@@ -1,8 +1,8 @@
 module API
   module Ver1
     class Tasks < Grape::API
-
       resource :tasks do
+
         # POST /api/v1/tasks
         desc "Create a tasks."
         params do
@@ -30,7 +30,7 @@ module API
           requires :user_id, type: Integer, desc: "User id."
         end
         get do
-          User.find(params[:user_id]).tasks.day_after(params[:start_day]).day_before(params[:end_day])
+          User.find(params[:user_id]).tasks.search_duration(params[:start_day], params[:end_day])
         end
 
         # GET /api/v1/tasks/{:id}
