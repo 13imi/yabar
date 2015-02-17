@@ -1,67 +1,107 @@
-# GET /users/current_tasks.json
+# API document
 
-- ログインユーザの現在のタスク情報を取得する
-- デフォルトではリクエスト日から1週間後まで
+## version1：開発用テストAPIでありユーザーIDも必要，本番ではサーバーでの認証ユーザーを用いる
+## POST /api/v1/tasks
+タスク作成を行う．
 
-### Requirement
+### Errors
+json error: Required paramsがない場合
 
-```
-GET /users/current_tasks.json
-```
+### Params
+| Param name         | Description             |
+|:-------------------|:------------------------|
+| name(required)     | Value: Must be String   |
+| deadline(required) | Value: Must be Date     |
+| yabasa(required)   | Value: Must be Interger |
+| user_id(required)  | Value: Must be Interger |
+| memo(optional)     | Value: Must be String   |
+
+## GET /api/v1/tasks
+ユーザーの持つ期間内のタスクを取得．
+
+### Errors
+json error: Required paramsがない場合
+
+### Params
+| Param name          | Description             |
+|:--------------------|:------------------------|
+| start_day(required) | Value: Must be Date     |
+| end_day(required)   | Value: Must be Date     |
+| user_id(required)   | Value: Must be Interger |
 
 ### Response
-
 ```
 [
-	{
-	    id: "1",
-		createdAt: "2015-01-21 02:47:20 UTC",
-		name: "タスク名1",
-		deadline: "2015-01-21",
-		yabasa: "3"	,
-		memo: "メモ1"
-	},
-	{
-		id: "2",
-		createdAt: "2015-01-20 07:04:51 UTC",
-		name: "タスク名2",
-		deadline: "2015-01-22",
-		yabasa: "4"	,
-		memo: "メモ2"
-	}
+    {
+        id: "1",
+        created_at: "2015-01-21 02:47:20 UTC",
+        name: "タスク名1",
+        deadline: "2015-01-21",
+        yabasa: "3" ,
+        memo: "メモ1",
+        user_id: 1
+    },
+    {
+        id: "2",
+        created_at: "2015-01-20 07:04:51 UTC",
+        name: "タスク名2",
+        deadline: "2015-01-22",
+        yabasa: "4" ,
+        memo: "メモ2",
+        user_id: 1
+    }
 ]
 ```
 
-# GET /users/past_tasks.json
+## GET /api/v1/tasks/{:id}
+特定のタスクを取得．
 
-- ログインユーザの過去のタスク情報を取得
-- リクエスト日以前
+### Errors
+json error: Required paramsがない場合
+400 特定のタスクがない場合
 
-### Requirement
-
-```
-GET /users/past_tasks.json
-```
-
-### Response
-
-```
-/users/current_tasks.jsonと同様と同様の形式
-```
-
-# GET /users/future_tasks.json
-
-- ログインユーザの先のタスク情報を取得
-- デフォルトでは1週間以降
-
-### Requirement
-
-```
-GET /users/future_tasks.json
-```
+### Params
+| Param name          | Description             |
+|:--------------------|:------------------------|
+| start_day(required) | Value: Must be Date     |
+| end_day(required)   | Value: Must be Date     |
+| user_id(required)   | Value: Must be Interger |
 
 ### Response
+```
+{
+    id: "1",
+    created_at: "2015-01-21 02:47:20 UTC",
+    name: "タスク名1",
+    deadline: "2015-01-21",
+    yabasa: "3" ,
+    memo: "メモ1"
+}
+```
 
-```
-/users/current_tasks.jsonと同様の形式
-```
+## PUT /api/v1/tasks
+タスクの更新を行う．
+
+### Errors
+400 指定のタスクがない場合
+
+### Params
+| Param name         | Description             |
+|:-------------------|:------------------------|
+| id(required)       | Value: Must be Interger |
+| name(optional)     | Value: Must be String   |
+| deadline(optional) | Value: Must be Date     |
+| yabasa(optional)   | Value: Must be Interger |
+| user_id(optional)  | Value: Must be Interger |
+| memo(optional)     | Value: Must be String   |
+
+## DELETE /api/v1/tasks
+タスクの削除を行う．
+
+### Errors
+400 指定のタスクがない場合，発生
+
+### Params
+| Param name         | Description             |
+|:-------------------|:------------------------|
+| id(required)       | Value: Must be Interger |
