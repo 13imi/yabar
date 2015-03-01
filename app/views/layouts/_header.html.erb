@@ -1,11 +1,16 @@
-<% if user_signed_in? %>
-  <h3>ようこそ、<%= current_user.name %> さん</h3>
-<% end %>
-<ul class="nav">
-  <% if user_signed_in? %>
-    <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
-  <% else %>
-    <li><%= link_to "facebookでログイン", user_omniauth_authorize_path(:facebook) %></li>
-    <li><%= link_to "twitterでログイン", user_omniauth_authorize_path(:twitter) %></li>
-  <% end %>
-</ul>
+<div class="navbar">
+  <div class="navbar-title">
+    <%= link_to "Yabar", root_path %>
+  </div>
+  <div class="navbar-nav">
+    <ul class="nav">
+      <% if user_signed_in? %>
+        <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
+        <li><%= link_to current_user.name, edit_user_registration_path %></li>
+      <% else %>
+        <li><%= link_to "facebookでログイン", user_omniauth_authorize_path(:facebook) %></li>
+        <li><%= link_to "twitterでログイン", user_omniauth_authorize_path(:twitter) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
