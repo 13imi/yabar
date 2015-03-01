@@ -18,6 +18,7 @@ json error: Required paramsがない場合
 
 ## GET /api/v1/tasks
 ユーザーの持つ期間内のタスクを取得．
+ヤバさ（yabasa）に応じてバー長(duration)を付加．duration = 2 ** duration
 
 ### Errors
 json error: Required paramsがない場合
@@ -39,7 +40,8 @@ json error: Required paramsがない場合
         deadline: "2015-01-21",
         yabasa: "3" ,
         memo: "メモ1",
-        user_id: 1
+        user_id: 1,
+        duration: 8
     },
     {
         id: "2",
@@ -48,7 +50,8 @@ json error: Required paramsがない場合
         deadline: "2015-01-22",
         yabasa: "4" ,
         memo: "メモ2",
-        user_id: 1
+        user_id: 1,
+        duration: 16
     }
 ]
 ```
