@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount API::Root => '/'
+
   get 'tasks/' => 'tasks#index'
   post 'tasks/' => 'tasks#create'
 
@@ -14,7 +16,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'tasks#index'
 
-  mount API::Root => '/'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
