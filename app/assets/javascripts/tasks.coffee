@@ -6,6 +6,11 @@
 SHOWDAY = 8
 
 $(document).on 'ready page:load', ->
+  $('a[rel*=leanModal]').leanModal
+    top: 50
+    overlay: 0.7
+    closeButton: '.modal_close'
+
   task = document.getElementById('task')
   template = document.getElementById('template').cloneNode(true)
   template.style.display = ''
@@ -14,7 +19,7 @@ $(document).on 'ready page:load', ->
   today = new Date()
   year = today.getFullYear()
   month = today.getMonth() + 1
-  date = today.getDay()
+  date = today.getDate()
   start_day = year + '-' + ('0' + month).slice(-2) + '-' + ('0' + date).slice(-2)
   end_day = year + '-' + ('0' + month).slice(-2) + '-' + ('0' + (date + SHOWDAY)).slice(-2)
 

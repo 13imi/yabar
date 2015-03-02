@@ -7,10 +7,34 @@
       <% if user_signed_in? %>
         <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
         <li><%= link_to current_user.name, edit_user_registration_path %></li>
+        <li>
+          <a rel="leanModal" href="#test">+</a>
+        </li>
       <% else %>
         <li><%= link_to "facebookでログイン", user_omniauth_authorize_path(:facebook) %></li>
         <li><%= link_to "twitterでログイン", user_omniauth_authorize_path(:twitter) %></li>
       <% end %>
     </ul>
+  </div>
+  <div id="test" class="modal">
+    <%= form_for @task do |f| %>
+      <div class="task-form">
+        <div class="field">
+          <label for="">タスク名</label>
+          <%= f.text_field :name %>
+        </div>
+        <div class="field">
+          <label for="">〆切</label>
+          <%= f.date_field :deadline %>
+        </div>
+        <div class="field">
+          <label for="">ヤバさ</label>
+          <%= f.number_field :yabasa %>
+        </div>
+      </div>
+      <div class="actions">
+        <%= f.submit '作成', class: 'btn btn-default' %>
+      </div>
+    <% end %>
   </div>
 </div>
