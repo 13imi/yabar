@@ -1,0 +1,31 @@
+<article class="yb-calendar">
+  <div class="yb-calendar-background">
+    <div class="yb-calendar-background-sidebar"></div>
+    <div class="yb-calendar-background-body"></div>
+  </div>
+  <header class="yb-calendar-header">
+    <div class="yb-calendar-row">
+      <div class="yb-calendar-sidebar">
+        <div class="yb-calendar-year"><%= @today.year %></div>
+        <div class="yb-calendar-month-wrapper">
+          <button class="yb-calendar-month-prev"></button>
+          <div class="yb-calendar-month"><%= @today.month %></div>
+          <button class="yb-calendar-month-next"></button>
+        </div>
+      </div>
+      <div class="yb-calendar-body">
+         <div class="yb-calendar-date-table">
+           <% ((@today)..(@today + 7.day)).each do |day| %>
+           <div class="yb-calendar-date-cell">
+             <div class="yb-calendar-day"><%= day.strftime("#{%w(SUN MON TUE WED THU FRI SAT)[day.wday]}") %></div>
+             <div class="yb-calendar-date <%= 'yb-calendar-today' if @today.day == day.day %>"><%= day.day %></div>
+           </div>
+           <% end %>
+           <div class="yb-calendar-date-cell"></div>
+         </div>
+      </div>
+    </div>
+  </header>
+  <section id="task" class="yb-calendar-task-list"></section>
+  <section class="yb-calendar-routine-list"></section>
+</article>

@@ -3,6 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @task = Task.new
+    @today = Time.zone.today
   end
 
   def create

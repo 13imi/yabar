@@ -1,7 +1,7 @@
 module API
   module Ver1
     module Entities
-      class Task < Grape::Entity
+      class TaskEntity < Grape::Entity
         expose :id, :name, :deadline, :yabasa, :memo, :user_id
         # 値を加工することができる。
         expose :duration do |task|
@@ -58,7 +58,7 @@ module API
           end
           get do
             tasks = User.find(params[:user_id]).tasks.search_duration(params[:start_day], params[:end_day])
-            present tasks, with: Entities::Task
+            present tasks, with: Entities::TaskEntity
           end
 
           # GET /api/v1/tasks/{:id}
