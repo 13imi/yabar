@@ -14,9 +14,9 @@ $(document).on 'ready page:load', ->
   today = new Date()
   year = today.getFullYear()
   month = today.getMonth() + 1
-  date = today.getDate()
-  start_day = year + '-' + month + '-' + date
-  end_day = year + '-' + month + '-' + date + SHOWDAY
+  date = today.getDay()
+  start_day = year + '-' + ('0' + month).slice(-2) + '-' + ('0' + date).slice(-2)
+  end_day = year + '-' + ('0' + month).slice(-2) + '-' + ('0' + date + SHOWDAY).slice(-2)
 
   $.get 'http://localhost:3000/api/v2/tasks', {
     start_day: start_day
