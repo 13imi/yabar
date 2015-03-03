@@ -10,7 +10,13 @@
     <div class="container">
       <%= render 'layouts/header' %>
       <%= yield %>
-    </div>
+      <% if notice.present? %>
+        <div class="notice"><%= notice %></div>
+      <% end %>
+      <% if alert.present? %>
+        <div class="alert"><%= alert %></div>
+      <% end %>
+  </div>
     <%= render 'layouts/facebook_sdk' %>
     <div id="lean_overlay"></div>
   </body>

@@ -14,23 +14,11 @@
  *= require_self
  */
 
-#lean_overlay {
-    display: none;
-    position: fixed;
-    z-index: 100;
-    top: 0px;
-    left: 0px;
-    height: 100%;
-    width: 100%;
-    background: #000;
-
-}
-
-.modal {
-    display: none;
-    width: 500px;
-    padding: 10px 20px;
-    background: #FFF;
+[class*=icono-], [class*=icono-] * {
+    height: 0px;
+    width: 20px;
+    color: #fff;
+    transform: scale(0.7);
 }
 
 body {
@@ -83,7 +71,7 @@ body {
     height: 46px;
 }
 
-.navbar .navbar-nav .nav > li a	{
+.navbar .navbar-nav .nav > li a, .navbar .navbar-nav .nav > li span {
 	  display: block;
 	  color: #FFF;
     font-size: 13px;
@@ -96,4 +84,75 @@ body {
 
 .navbar .navbar-nav .nav > li a:hover	{
     color: #eee;
+}
+
+#lean_overlay {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background: #000;
+}
+
+.modal {
+    display: none;
+    width: 500px;
+    padding: 10px 20px;
+    background: #FFF;
+    border-radius: 3px;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 8px 12px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btn-default {
+    color: #333333;
+    background-color: #ffffff;
+    border-color: #dddddd;
+}
+
+.btn-default:hover {
+    color: #333333;
+    background-color: #ebebeb;
+    border-color: #bebebe;
+}
+
+.notice {
+    width: 980px;
+    text-align: center;
+    color: white;
+    background-color: green;
+    opacity: 0.6;
+    margin-top: 15px;
+    border-radius: 3px;
+}
+
+.alert {
+    width: 980px;
+    text-align: center;
+    color: white;
+    background-color: orange;
+    opacity: 0.6;
+    margin-top: 15px;
+    border-radius: 3px;
 }

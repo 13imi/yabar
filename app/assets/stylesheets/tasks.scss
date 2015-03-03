@@ -11,14 +11,14 @@
     }
 }
 
-.task-form input {
+.task-form input[type=text], .task-form input[type=date]  {
     border:0;
-    padding:10px;
-    font-size:1.3em;
+    padding: 10px;
+    font-size: 15px;
     font-family:Arial, sans-serif;
     color:#aaa;
     border:solid 1px #ccc;
-    margin:0 0 20px;
+    /* margin: 10px 20px; */
     width:300px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -30,4 +30,41 @@
 
 .task-form input:focus {
     border:solid 1px #0096bc;
+}
+
+.task-form label{
+    display: block;
+    float: left;
+    width: 100px;
+    padding-top: 8px;
+    color: #222;
+    font-size: 16px;
+    text-align: left;
+}
+
+#modal-form {
+    padding: 0;
+}
+
+#modal-form .field {
+    padding: 20px;
+    border-bottom: 1px solid #EEE;
+}
+
+#modal-form .btn {
+    float: right;
+    margin: 10px 20px;
+}
+
+#modal-form .modal-header {
+    background-color: #0096bc;
+    color: white;
+    padding: 5px 18px 5px 18px;
+    border-bottom: 1px solid #CCC;
+    border-top-left-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -webkit-border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -webkit-border-top-right-radius: 3px;
 }

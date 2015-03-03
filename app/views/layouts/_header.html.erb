@@ -6,9 +6,9 @@
     <ul class="nav">
       <% if user_signed_in? %>
         <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
-        <li><%= link_to current_user.name, edit_user_registration_path %></li>
+        <li><span><%= current_user.name %></span></li>
         <li>
-          <a rel="leanModal" href="#test">+</a>
+          <a rel="leanModal" href="#modal-form"><i class="icono-plus"></i></a>
         </li>
       <% else %>
         <li><%= link_to "facebookでログイン", user_omniauth_authorize_path(:facebook) %></li>
@@ -16,20 +16,27 @@
       <% end %>
     </ul>
   </div>
-  <div id="test" class="modal">
+  <div id="modal-form" class="modal">
     <%= form_for @task do |f| %>
+      <div class="modal-header">
+        <h3>タスクを追加</h3>
+      </div>
       <div class="task-form">
         <div class="field">
           <label for="">タスク名</label>
           <%= f.text_field :name %>
         </div>
         <div class="field">
-          <label for="">〆切</label>
+          <label for="">締切</label>
           <%= f.date_field :deadline %>
         </div>
         <div class="field">
           <label for="">ヤバさ</label>
-          <%= f.number_field :yabasa %>
+          <%= f.radio_button :yabasa, 1 %> 1
+          <%= f.radio_button :yabasa, 2 %> 2
+          <%= f.radio_button :yabasa, 3 %> 3
+          <%= f.radio_button :yabasa, 4 %> 4
+          <%= f.radio_button :yabasa, 5 %> 5
         </div>
       </div>
       <div class="actions">

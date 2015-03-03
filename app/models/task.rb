@@ -6,6 +6,8 @@ class Task < ActiveRecord::Base
   scope :day_before, ->(day) { where('deadline <= ?', day) }
   scope :day_after, ->(day) { where('deadline >= ?', day) }
 
+  validates :name, :yabasa, :deadline, presence: true
+
   def self.search_duration(start_day, end_day)
     range = start_day..end_day
     include_deadline = select { |task| range.cover? task.deadline }
