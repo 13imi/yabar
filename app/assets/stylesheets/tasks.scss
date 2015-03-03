@@ -27,3 +27,7 @@
     -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
     box-shadow: inner 0 0 4px rgba(0, 0, 0, 0.2);
 }
+
+.task-form input:focus {
+    border:solid 1px #0096bc;
+}
