@@ -11,6 +11,9 @@ $(document).on 'ready page:load', ->
     overlay: 0.7
     closeButton: '.modal_close'
 
+  $('#yabasa-slider').radiosToSlider();
+  $("#datepicker").datepicker();
+
   task = document.getElementById('task')
   template = document.getElementById('template').cloneNode(true)
   template.style.display = ''

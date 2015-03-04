@@ -5,6 +5,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" rel="stylesheet" />
   </head>
   <body>
     <div class="container">
@@ -16,8 +17,10 @@
       <% if alert.present? %>
         <div class="alert"><%= alert %></div>
       <% end %>
-  </div>
+    </div>
     <%= render 'layouts/facebook_sdk' %>
     <div id="lean_overlay"></div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
   </body>
 </html>

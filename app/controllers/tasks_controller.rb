@@ -11,9 +11,9 @@ class TasksController < ApplicationController
     @task.user = current_user
 
     if @task.save
-      redirect_to tasks_path, notice: 'タスクを登録しました'
+      redirect_to tasks_path, notice: 'タスクを登録しました。'
     else
-      redirect_to tasks_path, alert: 'すべて項目を入力してください'
+      redirect_to tasks_path, alert: 'すべて項目を入力してください。'
     end
 
     # respond_to do |format|

@@ -16,10 +16,10 @@
     padding: 10px;
     font-size: 15px;
     font-family:Arial, sans-serif;
-    color:#aaa;
+    color:#888;
     border:solid 1px #ccc;
-    /* margin: 10px 20px; */
     width:300px;
+    height: 20px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -28,8 +28,21 @@
     box-shadow: inner 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
+.task-form #yabasa-slider {
+    margin-left: 100px;
+}
+
 .task-form input:focus {
     border:solid 1px #0096bc;
+}
+
+.radios-to-slider {
+    margin-bottom: 30px;
+}
+
+.radios-to-slider.medium .slider-label {
+    margin-left: 15px;
+    top: 30px;
 }
 
 .task-form label{

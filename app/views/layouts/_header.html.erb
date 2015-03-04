@@ -28,15 +28,22 @@
         </div>
         <div class="field">
           <label for="">締切</label>
-          <%= f.date_field :deadline %>
+          <%= f.text_field :deadline, id: 'datepicker' %>
         </div>
         <div class="field">
           <label for="">ヤバさ</label>
-          <%= f.radio_button :yabasa, 1 %> 1
-          <%= f.radio_button :yabasa, 2 %> 2
-          <%= f.radio_button :yabasa, 3 %> 3
-          <%= f.radio_button :yabasa, 4 %> 4
-          <%= f.radio_button :yabasa, 5 %> 5
+          <div id="yabasa-slider">
+            <%= f.radio_button :yabasa, 1, checked: true %>
+            <label for="1">1</label>
+            <%= f.radio_button :yabasa, 2 %>
+            <label for="2">2</label>
+            <%= f.radio_button :yabasa, 3 %>
+            <label for="3">3</label>
+            <%= f.radio_button :yabasa, 4 %>
+            <label for="4">4</label>
+            <%= f.radio_button :yabasa, 5 %>
+            <label for="5">5</label>
+          </div>
         </div>
       </div>
       <div class="actions">
